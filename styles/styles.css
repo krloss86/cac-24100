@@ -1,0 +1,86 @@
+/*es bloqueante*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    font-size: 16px;
+    /*defino la fuente general*/
+    -family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+    
+    /*TPH: VER 0.2PX QUE FALTA!!!*/
+    /*definir variables!!!*/
+    --tamanio: 25px;
+}
+
+* {
+    /* modelo de caja */
+    margin: 0;
+    padding: 0;
+    /**/
+}
+
+header {
+    border: 5px solid red;
+    padding: 35px; 
+    width: 90VW;
+    box-sizing: border-box;
+}
+
+.menu {
+    /*background-color: aqua;*/
+}
+.menu li {
+    list-style: none;
+    display: inline-block;
+    width: 20vw;
+    text-align: center;
+    color: blue;
+}
+.menu a {
+    text-decoration: none;
+}
+
+.ubuntu-regular {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.ubuntu-bold {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.ubuntu-regular-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.ubuntu-bold-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/*Mobile first*/
+.main {
+    background-image: url(../imgs/banner-bg.jpg);
+    /*TPH!!!*/
+    height: 50vh/*px|vh|vw|%*/;
+    width: 95vw;/*relativo al viewport*/
+}
+
+header {
+    font-size: 19px;
+}
+
+/*fuentes*/
+h3 {
+    color: green;
+    font-size: 1.17em; /*16px * 1.17*/
+}
+

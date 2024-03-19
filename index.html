@@ -6,32 +6,51 @@
     <!-- esto lo ve el browser, pero no el usuario-->
     <title>Clase1 - HTML</title>
     <!-- aca podemos poner un icono-->
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <!--importar las fuente
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    -->
 </head>
 
-<!-- es todo lo que va dentro del body-->
 <body>
+    <!-- header-->
     <header>
-        <!-- listas No ordenadas-->
-        <ul>
-            <li>
-                <a href="./html/tablas.html">Tablas</a>    
+        <i class="fa-solid fa-film"></i>
+        <h3>CAC - Movies</h3>
+
+        <ul class="menu">
+            <li id="m1">
+                <a href="">Tendencias</a>
             </li>
             <li>
-                <!--tarea-->
-                <a href="./html/etiquetas.html">Etiquetas Básicas</a>    
+                <a href="">Registrarse</a>
             </li>
-            <li>                
-                <a href="./html/multimedia.html">Multimedia</a>    
+            <li>
+                <a href="" class="linksSinBla">Iniciar Sesión</a>
             </li>
-            <li>                
-                <a href="./html/formularios.html">Formularios</a>    
+            <!--
+            <li>
+                <a href="./html/medidas.html">Medidas</a>
             </li>
+            -->
         </ul>
     </header>
-    <!-- -->
-    <h1>Titulo principal</h1>
-    <p>parrafo 1</p>
-    <a href="https://www.google.com.ar">Google</a>
-    <!-- relativo o absoluto? -->
-    <img src="./imgs/leono.jpg">
+    <main>
+
+        <!-- imagen de fondo con los titulos y botones-->
+        <section class="main">
+            <h1>Películas y series ilimitadas en un solo lugar</h1>
+            <h2>Disfruta donde quieras. Cancela en caulquier momento</h2>
+            <button>
+                Registrate
+            </button>
+        </section>
+
+    </main>
+
+    <script src="https://kit.fontawesome.com/181725805d.js" crossorigin="anonymous"></script>
 </body>
+</html>
