@@ -17,6 +17,9 @@
     --texto-blanco: #ffffff;
     --color-primario: #9f3647;
     --fondo-negro: #0a0a0a;
+    
+    /*gris*/
+    --gris: #808080;
 }
 
 * {
@@ -143,3 +146,75 @@ h3 {
     font-size: 1.17em; /*16px * 1.17*/
 }
 
+/*estilos formulario de busqueda de peliculas*/
+.form-busqueda {
+    background-color: var(--fondo-negro);
+    color: var(--texto-blanco);
+    height: 50vh;
+    padding-top: 15vh;
+    text-align: center;
+}
+/*selectores avanzados*/
+.form-busqueda h2{
+    font-size: 2rem;
+}
+.form-busqueda form {
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+}
+.form-busqueda form input {
+    border-radius: 20px;
+    padding: 10px 10px;
+    border: none;
+    color: var(--gris);
+    text-transform: capitalize;
+    /*tph: investigar como sacar el border*/
+    width: 50vw;
+}
+.form-busqueda form button {
+    border-radius: 20px;
+    padding: 10px 10px;    
+    min-width: 10vw;
+    border: 2px solid var(--texto-blanco);
+    background-color: var(--color-primario);
+    color: var(--texto-blanco);
+    margin-left: 1vw;
+}
+.form-busqueda hr {    
+    width: 70vw;
+    margin: 0 auto;/*una forma de center*/
+    /*text-align: center*/
+    border: 1px solid var(--color-primario)
+}
+/*efecto cuando pasamos sobre el boton*/
+.form-busqueda form button:hover {
+    width: 10.5vw;
+}
+/*agrupado: ,
+p,h1,h2,h3 {
+    color: blue !important;
+}
+*/
+/*hijos directo: >  
+section > h2 {
+    color: greenyellow;
+}
+*/
+/*hermano adyacente: +
+form#frm input + button {
+  color: green !important;  
+}
+*/
+/*hermano general: ~
+h2 ~ form {
+    background-color: green !important; 
+}
+*/
+
+/*position*/
+#goBack {
+    position: fixed;
+    top: 5px;
+    left: 15px;
+    /*tph: poner a bajo a la derecha!!!*/
+}   
