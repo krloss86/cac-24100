@@ -16,8 +16,8 @@
 </head>
 
 <body>
-    <!-- header-->
-    <header class="header">
+    <!-- header > flex-container-->
+    <header class="header" id="header">
         <div class="header_logo">
             <i class="fa-solid fa-film textoBlanco"></i>
             <h3 class="textoBlanco">CAC - Movies</h3><!--convierto a inline-->
@@ -34,7 +34,7 @@
         <!-- imagen de fondo con los titulos y botones-->
         <section class="main">
             <h1 class="textoBlanco">Películas y series ilimitadas<br> en un solo lugar</h1>
-            <h2 class="textoBlanco">Disfruta donde quieras.<br> Cancela en caulquier momento</h2>
+            <h2 class="textoBlanco">Disfruta donde quieras.<br> Cancela en cualquier momento</h2>
             <button class="textoBlanco">
                 Registrate
             </button>
@@ -51,6 +51,17 @@
             </form>
             <hr>        
         </section>
+
+        <!--flexbox-->
+        <section class="flex-container">
+            <div class="flex-item">
+                Item1
+            </div>
+            <div class="flex-item">
+                Item2
+            </div>
+        
+        </section>
     </main>
     <!--
     <table class="tabla">
@@ -66,7 +77,9 @@
         </tr>
     </table>
     -->
-    <i class="fa fa-circle" id="goBack"></i>
+    <a href="#header">
+        <i class="fa fa-circle-up" id="goBack"></i>
+    </a>
     <script src="https://kit.fontawesome.com/181725805d.js" crossorigin="anonymous"></script>
 </body>
 </html>
