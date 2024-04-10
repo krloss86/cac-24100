@@ -258,12 +258,14 @@ h2 ~ form {
         background-color: var(--gris);
     } */  
 }
-
+/*
 @media screen and (min-width: 1200px) {
     .header {
         background-color: blue;
     }
 }
+*/
+/*
 @media screen and (min-width: 600px) {
     .header {
         background-color: green;
@@ -271,5 +273,5 @@ h2 ~ form {
     .header_menu {
         display: none;
     }
-
 }
+*/
