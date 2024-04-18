@@ -47,39 +47,22 @@
             <form action="./html/resultado-busqueda.html"
                 id="frm">
                 <input type="search" 
-                    placeholder="Buscar...">
-                <button>
+                    placeholder="Buscar..."
+                    id="claveDeBusqueda">
+                <!-- ver que tag permite hacer predictivo -->
+                <button 
+                    type="button"
+                    id="btnBusqueda"
+                >
                     Buscar
                 </button>
             </form>
             <hr>        
+            <h4 id="textoBuscado"></h4>
         </section>
-
-        <!--flexbox-->
-        <section class="flex-container">
-            <div class="flex-item">
-                Item1
-            </div>
-            <div class="flex-item">
-                Item2
-            </div>
-        
+        <section>
         </section>
     </main>
-    <!--
-    <table class="tabla">
-        <tr class="odd">
-            <td>
-                
-            </td>
-        </tr>
-        <tr class="even">
-            <td>
-
-            </td>
-        </tr>
-    </table>
-    -->
     <a href="#header">
         <i class="fa fa-circle-up" id="goBack"></i>
     </a>
@@ -87,6 +70,7 @@
     <!--aca van los archivos .js-->
     <!--<script src="./js/holamundo.js"></script>-->
     <!--incluir el /js/script.js-->
-    <script src="./js/script.js"></script>
+    <!--<script src="./js/script.js"></script>-->
+    <script src="./js/buscador.js"></script>
 </body>
 </html>
