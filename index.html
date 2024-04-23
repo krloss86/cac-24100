@@ -42,6 +42,17 @@
                 Registrate
             </button>
         </section>
+        <section>
+            <input type="number" 
+                id="valorA">
+            <input type="number" 
+                id="valorB">
+            <button id="btnCalcular"
+                onclick="calcular()">
+                Calcular
+            </button>
+            <span id="resultado"></span>
+        </section>
         <section class="form-busqueda">
             <h2>¿Qué estas buscando para ver?</h2>
             <form action="./html/resultado-busqueda.html"
@@ -59,9 +70,7 @@
             </form>
             <hr>        
             <h4 id="textoBuscado"></h4>
-        </section>
-        <section>
-        </section>
+        </section>        
     </main>
     <a href="#header">
         <i class="fa fa-circle-up" id="goBack"></i>
@@ -72,5 +81,6 @@
     <!--incluir el /js/script.js-->
     <!--<script src="./js/script.js"></script>-->
     <script src="./js/buscador.js"></script>
+    <script src="./js/operadores.js"></script>
 </body>
 </html>
