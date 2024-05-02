@@ -29,8 +29,3 @@ function calcular() {
     }
 }
 
-// if/else
-// switch
-// ciclos:
-// for/white/do-while
-// arrays
