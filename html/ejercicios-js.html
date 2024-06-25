@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="ingresarValor()">
+        Ingrese N
+    </button>
+    <hr/>
+
+    <div>
+        <label>Nombre</label>
+        <input id="nombre"></input>
+        <label>Apellido</label>
+        <input id="apellido"></input>
+        <label>Email</label>
+        <input id="email"></input>
+        <label>Tipo Cliente</label>
+        <select id="tipoCliente">
+            <option value="1">bronce</option>
+            <option value="2">plata</option>
+            <option value="3">oro</option>
+        </select>
+        <button id="btnCrear"
+            onclick="crear()">
+            Crear
+         </button>
+    </div>
+
+    <button onclick="llamarAPI()">
+        Llamar API
+    </button>
+
+    <table width="100%" border="1">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    EMAIL
+                </th>
+                <th>
+                    NOMBRE
+                </th>
+                <th>
+                    APELLIDO
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="datos">
+            
+        </tbody>
+    </table>
+    <script src="../js/ejercicios-js.js"></script>
+</body>
+</html>
