@@ -56,7 +56,7 @@ function crear() {
     //fetch POST al server para crear el recurso(cliente)
     fetch('http://localhost:8080/webapp/CrearClientesController',{
         method: 'POST',
-        data: json,
+        body: json,
         headers: new Headers({
             'Content-Type': 'text/json'
         })
