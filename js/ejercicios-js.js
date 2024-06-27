@@ -1,44 +1,8 @@
-function ingresarValor() {
-    let n;
-    //let rangoValido = true;
-    do {
-        n = validarNumero();
-        /*rangoValido = rango(n,1,10);  
-        if(!rangoValido){
-            alert('Fuera de rango (1-10)')
-        }
-        //si llegó acá es porque n es un número y está entre 1 y 10
-        */
-    }while(!rango(n,1,10));
-    mostrarTabla(n);
-}
-
-function mostrarTabla(n) {
-    for(let i=1;i<=10;i++) {
-        console.log(`${n} x ${i} = `,n * i);
-    }
-}
-
-function rango(valor,inicio,fin)  {
-    const value = Number(valor);  
-    return value >= inicio &&  value <= fin;
-}
-
-function validarNumero () {
-    let numero = NaN;
-    do {
-        const valor = prompt('Ingrese valor (entre 1 -10)');   
-        numero = Number(valor);// Number(ABC) > NaN
-    }while(!numero);
-
-    return numero;
-}
-//ciclo do-while
-function crear() {
+async function crear() {
     const nombre = document.getElementById('nombre').value
     const apellido = document.getElementById('apellido').value
     const email = document.getElementById('email').value
-    const tipoCliente = document.getElementById('tipoCliente').value
+    const tipoClienteId = document.getElementById('tipoCliente').value
 
     console.log(nombre,apellido,email,tipoCliente);
 
@@ -48,25 +12,25 @@ function crear() {
         nombre,
         apellido,
         email,
-        tipoCliente
+        tipoClienteId
     };
 
     const json = JSON.stringify(jsonRequest);
 
     //fetch POST al server para crear el recurso(cliente)
-    fetch('http://localhost:8080/webapp/CrearClientesController',{
+    await fetch('http://localhost:8080/webapp/CrearClientesController',{
         method: 'POST',
         body: json,
         headers: new Headers({
             'Content-Type': 'text/json'
         })
         }
-    )
-    .then(response.json())
-    .then(data => console.log(data));
+    );
+
+    llamarAPI();
 }
 
-function llamarAPI() {
+function listar() {
     const json = 
         fetch('http://localhost:8080/webapp/ListarClientesController')
         .then(response => response.json())
@@ -75,7 +39,7 @@ function llamarAPI() {
 
 function dibujarDatos(json) {
     console.log(json)
-    const filas = json.data.map(x => Fila(x));
+    const filas = json.map(x => Fila(x));
     /*[x,       x]
      Fila(x) Fila(x)  
     ['tr','tr']*/
@@ -84,9 +48,22 @@ function dibujarDatos(json) {
     document.getElementById('datos').innerHTML = filas.join(' ');
 }
 
+async function eliminar(id) {
+    const eliminar = confirm('¿Eliminar?');//true|false
+    if(eliminar) {
+        //fetch sin anda envia por GET
+        await fetch(`http://localhost:8080/webapp/EliminarClienteController?id=${id}`,{
+            method: 'delete'
+        });
+        listar();//vuelve a buscar todo en el back
+
+        //pero podria solo eliminar la fila TPH:
+    }
+}
+
 function Fila(obj) {
     return `
-        <tr>
+        <tr id='${obj.id}'>
             <td>
                 ${obj.id}
             </td>
@@ -94,14 +71,20 @@ function Fila(obj) {
                 ${obj.email}
             </td>
             <td>
-                ${obj.first_name}
+                ${obj.nombre}
             </td>
             <td>
-            ${obj.last_name}
+                ${obj.apellido}
             </td>
             <th>
-                <img src='${obj.avatar}' width="50px"/>
+                <img src='${obj.imagen}' width="50px"/>
             </th>
+            <td>
+                <a href="#" onclick="eliminar(${obj.id})">X</a>
+            </td>
         </tr>
     `
 }
+
+//ni bien carga la pagina, cargo la lista de los datos
+listar();
