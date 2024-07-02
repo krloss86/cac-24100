@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="../js/auth.js"></script>
+    <script>
+        isLogged();
+    </script>
 </head>
 <body>
-
     <div>
+        <input id="id" type="hidden"/>
         <label>Nombre</label>
         <input id="nombre"></input>
         <label>Apellido</label>
@@ -21,8 +25,12 @@
             <option value="3">oro</option>
         </select>
         <button id="btnCrear"
-            onclick="crear()">
-            Crear
+            onclick="crear('crear')">
+            Guardar
+         </button>
+        <button id="btnLogout"
+            onclick="logout()">
+            Logout
          </button>
     </div>
     <hr>
@@ -53,6 +61,25 @@
             
         </tbody>
     </table>
-    <script src="../js/ejercicios-js.js"></script>
+    <hr>
+    <div>
+        <label>Nombre</label>
+        <input id="nombre_edit"></input>
+        <label>Apellido</label>
+        <input id="apellido_edit"></input>
+        <label>Email</label>
+        <input id="email_edit"></input>
+        <label>Tipo Cliente</label>
+        <select id="tipoCliente_edit">
+            <option value="1">bronce</option>
+            <option value="2">plata</option>
+            <option value="3">oro</option>
+        </select>
+        <button id="btnEditar"
+            onclick="editar()">
+            Editar
+         </button>        
+    </div>
+    <script src="../js/crud.js"></script>
 </body>
 </html>

@@ -1,10 +1,26 @@
-async function crear() {
-    const nombre = document.getElementById('nombre').value
-    const apellido = document.getElementById('apellido').value
-    const email = document.getElementById('email').value
-    const tipoClienteId = document.getElementById('tipoCliente').value
+//listado de todos lo que vino del server
+let datos = [];
 
-    console.log(nombre,apellido,email,tipoCliente);
+function editar(id) {
+    const objetoAEditar =  datos.find(x => x.id === id);
+    //alert(JSON.stringify(objetoAEditar));
+    
+    //actualizo el html con los datos del row
+    document.getElementById('nombre_edit').value = objetoAEditar.nombre;
+    document.getElementById('apellido_edit').value = objetoAEditar.apellido;
+    document.getElementById('email_edit').value = objetoAEditar.email;
+    document.getElementById('tipoCliente_edit').value = objetoAEditar.tipoClienteId;
+
+    //modificar(objetoAEditar.id);
+}
+
+async function modificar(id) {
+    const nombre = document.getElementById('nombre_edit').value
+    const apellido = document.getElementById('apellido_edit').value
+    const email = document.getElementById('email_edit').value
+    const tipoClienteId = document.getElementById('tipoCliente_edit').value
+
+    console.log(nombre,apellido,email,tipoClienteId);
 
     //const formData = new FormData();
 
@@ -18,7 +34,42 @@ async function crear() {
     const json = JSON.stringify(jsonRequest);
 
     //fetch POST al server para crear el recurso(cliente)
-    await fetch('http://localhost:8080/webapp/CrearClientesController',{
+    await fetch(`http://localhost:8080/webapp/ModificarClientesController?id=${id}`,{
+        method: 'POST',
+        body: json,
+        headers: new Headers({
+            'Content-Type': 'text/json'
+        })
+        }
+    );
+
+    llamarAPI();
+}
+
+async function crear(accion) {
+    const id = document.getElementById('id').value
+    const nombre = document.getElementById('nombre').value
+    const apellido = document.getElementById('apellido').value
+    const email = document.getElementById('email').value
+    const tipoClienteId = document.getElementById('tipoCliente').value
+
+    console.log(nombre,apellido,email,tipoClienteId);
+
+    //const formData = new FormData();
+
+    const jsonRequest = {
+        nombre,
+        apellido,
+        email,
+        tipoClienteId
+    };
+
+    const json = JSON.stringify(jsonRequest);
+
+    const endpoint = accion === 'crear' ? 'CrearClientesController' : 'ModificarClientesController';
+
+    //fetch POST al server para crear el recurso(cliente)
+    await fetch(`http://localhost:8080/webapp/${endpoint}`,{
         method: 'POST',
         body: json,
         headers: new Headers({
@@ -34,7 +85,10 @@ function listar() {
     const json = 
         fetch('http://localhost:8080/webapp/ListarClientesController')
         .then(response => response.json())
-        .then(data => dibujarDatos(data));
+        .then(data => {
+            datos = data;
+            dibujarDatos(data)
+        });
 }
 
 function dibujarDatos(json) {
@@ -81,6 +135,7 @@ function Fila(obj) {
             </th>
             <td>
                 <a href="#" onclick="eliminar(${obj.id})">X</a>
+                <a href="#" onclick="editar(${obj.id    })">Edit</a>
             </td>
         </tr>
     `
