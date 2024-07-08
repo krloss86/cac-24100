@@ -6,25 +6,36 @@ function editar(id) {
     //alert(JSON.stringify(objetoAEditar));
     
     //actualizo el html con los datos del row
-    document.getElementById('nombre_edit').value = objetoAEditar.nombre;
-    document.getElementById('apellido_edit').value = objetoAEditar.apellido;
-    document.getElementById('email_edit').value = objetoAEditar.email;
-    document.getElementById('tipoCliente_edit').value = objetoAEditar.tipoClienteId;
+    document.getElementById('nombre').value = objetoAEditar.nombre;
+    document.getElementById('apellido').value = objetoAEditar.apellido;
+    document.getElementById('email').value = objetoAEditar.email;
+    document.getElementById('tipoCliente').value = objetoAEditar.tipoClienteId;
 
-    //modificar(objetoAEditar.id);
+    //agregamos el id al campo hidden
+    document.getElementById('id').value = objetoAEditar.id;
 }
 
-async function modificar(id) {
-    const nombre = document.getElementById('nombre_edit').value
-    const apellido = document.getElementById('apellido_edit').value
-    const email = document.getElementById('email_edit').value
-    const tipoClienteId = document.getElementById('tipoCliente_edit').value
+function limpiar() {
+    document.getElementById('nombre').value = '';
+    document.getElementById('apellido').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('tipoCliente').value = '';
+    document.getElementById('id').value = '';
+}
 
-    console.log(nombre,apellido,email,tipoClienteId);
+async function guradar() {
+    const id = document.getElementById('id').value;
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const email = document.getElementById('email').value;
+    const tipoClienteId = document.getElementById('tipoCliente').value;
+    
+    console.log(nombre,apellido,email,tipoClienteId,id);
 
     //const formData = new FormData();
 
     const jsonRequest = {
+        id,
         nombre,
         apellido,
         email,
@@ -33,40 +44,7 @@ async function modificar(id) {
 
     const json = JSON.stringify(jsonRequest);
 
-    //fetch POST al server para crear el recurso(cliente)
-    await fetch(`http://localhost:8080/webapp/ModificarClientesController?id=${id}`,{
-        method: 'POST',
-        body: json,
-        headers: new Headers({
-            'Content-Type': 'text/json'
-        })
-        }
-    );
-
-    llamarAPI();
-}
-
-async function crear(accion) {
-    const id = document.getElementById('id').value
-    const nombre = document.getElementById('nombre').value
-    const apellido = document.getElementById('apellido').value
-    const email = document.getElementById('email').value
-    const tipoClienteId = document.getElementById('tipoCliente').value
-
-    console.log(nombre,apellido,email,tipoClienteId);
-
-    //const formData = new FormData();
-
-    const jsonRequest = {
-        nombre,
-        apellido,
-        email,
-        tipoClienteId
-    };
-
-    const json = JSON.stringify(jsonRequest);
-
-    const endpoint = accion === 'crear' ? 'CrearClientesController' : 'ModificarClientesController';
+    const endpoint = id ? 'ActualizarClienteController' : 'CrearClientesController';
 
     //fetch POST al server para crear el recurso(cliente)
     await fetch(`http://localhost:8080/webapp/${endpoint}`,{
@@ -77,8 +55,9 @@ async function crear(accion) {
         })
         }
     );
+    limpiar();
 
-    llamarAPI();
+    listar();
 }
 
 function listar() {

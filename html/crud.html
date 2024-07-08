@@ -11,6 +11,7 @@
 </head>
 <body>
     <div>
+        <input type="hidden" id="id">
         <input id="id" type="hidden"/>
         <label>Nombre</label>
         <input id="nombre"></input>
@@ -25,7 +26,7 @@
             <option value="3">oro</option>
         </select>
         <button id="btnCrear"
-            onclick="crear('crear')">
+            onclick="guradar()">
             Guardar
          </button>
         <button id="btnLogout"
@@ -60,26 +61,7 @@
         <tbody id="datos">
             
         </tbody>
-    </table>
-    <hr>
-    <div>
-        <label>Nombre</label>
-        <input id="nombre_edit"></input>
-        <label>Apellido</label>
-        <input id="apellido_edit"></input>
-        <label>Email</label>
-        <input id="email_edit"></input>
-        <label>Tipo Cliente</label>
-        <select id="tipoCliente_edit">
-            <option value="1">bronce</option>
-            <option value="2">plata</option>
-            <option value="3">oro</option>
-        </select>
-        <button id="btnEditar"
-            onclick="editar()">
-            Editar
-         </button>        
-    </div>
+    </table>    
     <script src="../js/crud.js"></script>
 </body>
 </html>
