@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function guardar() {
+            const request = {
+                titulo: document.getElementById('titulo').value,
+                autor:document.getElementById('autor').value,
+                precio: document.getElementById('precio').value
+            };
+
+            fetch('http://localhost:8080/webapp/api/articulo',{
+                method: 'post',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(request)
+            })
+            .then(response => console.log(response))
+            .then(data => console.log(data));
+        }
+
+        function listar() {
+            fetch('http://localhost:8080/webapp/api/articulo')
+            .then(response => response.json())
+            .then(data => console.log(data));
+        }
+
+        listar();
+    </script>
+</head>
+<body>
+        <label>Titulo</label>
+        <input id="titulo"></input>
+
+        <label>Autor</label>        
+        <input id="autor"></input>
+
+        <label>Precio</label>
+        <input id="precio" type="number"></input>      
+        
+        <button id="btnCrear"
+            onclick="guardar()">
+            Guardar
+         </button>
+</body>
+</html>
